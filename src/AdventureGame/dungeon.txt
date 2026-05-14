@@ -1,0 +1,41 @@
+ROWS=2
+COLS=2
+
+EXIT=0,1
+ADVENTURER=1,0
+LAMP=0,0
+KEY=0,0
+CHEST=1,0
+GRUE=1,1
+
+ROOM 0,0
+LIT=true
+DESC=Room 1
+N=false
+S=true
+E=true
+W=false
+
+ROOM 0,1
+LIT=false
+DESC=Room 2
+N=false
+S=true
+E=false
+W=true
+
+ROOM 1,0
+LIT=true
+DESC=Room 3
+N=true
+S=false
+E=true
+W=false
+
+ROOM 1,1
+LIT=false
+DESC=Room 4
+N=true
+S=false
+E=false
+W=true

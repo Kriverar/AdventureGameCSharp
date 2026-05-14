@@ -87,7 +87,19 @@ public class AdventureGame
 
 	private void LoadDungeonFromFile(string fileName)
 	{
-		string[] lines = File.ReadAllLines(fileName);
+	 	string path = fileName;
+
+		if(!File.Exists(path))
+		{
+			path = Path.Combine(AppContext.BaseDirectory, fileName);
+		}
+
+		if(!File.Exists(path))
+		{
+			path = Path.Combine("src", "AdventureGame", fileName);
+		}
+
+		string[] lines = File.ReadAllLines(path);
 
 		int rows = 0;
 		int cols = 0;

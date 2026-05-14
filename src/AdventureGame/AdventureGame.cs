@@ -316,15 +316,16 @@ public class AdventureGame
 
 	private void UpdateGameState()
 	{
-		if(!isAdventureAlive || hasPlayerQuit)
+		if(hasPlayerQuit || !isAdventureAlive)
 		{
 			return;
 		}
 
-		if(isChestOpen && aRow == exitRow && aCol == exitCol)
+		if(aRow == grueRow && aCol == grueCol)
 		{
-			Console.WriteLine("You found the dungeon exit after getting the treasure!");
-			Console.WriteLine("You escaped the dungeon!");
+			Console.WriteLine("The Grue is in the same room as you!");
+			Console.WriteLine("You got eaten alive by the Grue!");
+			isAdventureAlive = false;
 			return;
 		}
 
@@ -334,9 +335,17 @@ public class AdventureGame
 
 			if(aRow == grueRow && aCol == grueCol)
 			{
-				Console.WriteLine("The Grue caught you after you opened the treasure chest!");
+				Console.WriteLine("The Grue caught you while chasing you!");
+				Console.WriteLine("You got eaten alive by the Grue!");
 				isAdventureAlive = false;
+				return;
 			}
+		}
+
+		if(isChestOpen && aRow == exitRow && aCol == exitCol)
+		{
+			Console.WriteLine("You reached the dungeon exit with the treasure!");
+			Console.WriteLine("You escaped the dungeon!");
 		}
 	}
 

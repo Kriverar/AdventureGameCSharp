@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Linq;
 namespace AdventureGame;
 
 public class AdventureGame
@@ -19,6 +22,21 @@ public class AdventureGame
 	private bool hasPlayerQuit;
 	private bool isAdventureAlive;
 	private string lastDirection;
+
+	private int exitRow;
+	private int exitCol;
+
+	private int lampRow;
+	private int lampCol;
+
+	private int keyRow;
+	private int keyCol;
+
+	private int chestRow;
+	private int chestCol;
+
+	private int grueRow;
+	private int grueCol;
 
 	public AdventureGame()
 	{
@@ -58,46 +76,140 @@ public class AdventureGame
 	{
 		adventurer = new Adventurer();
 
-		Room r1 = new Room();
-		r1.SetLit(true);
-		r1.SetDescription("Room 1");
-		r1.SetSouth(true);
-		r1.SetEast(true);
-		r1.SetLamp(true);
-		r1.SetKey(true);
-
-		Room r2 = new Room();
-		r2.SetDescription("Room 2");
-		r2.SetSouth(true);
-		r2.SetWest(true);
-
-		Room r3 = new Room();
-		r3.SetLit(true);
-		r3.SetDescription("Room 3");
-		r3.SetNorth(true);
-		r3.SetEast(true);
-		r3.SetChest(true);
-
-
-		Room r4 = new Room();
-		r4.SetDescription("Room 4");
-		r4.SetNorth(true);
-		r4.SetWest(true);
-
-		dungeon = new Room[,]
-		{
-			{ r1, r2 },
-			{ r3, r4 }
-		};
-
-		aRow = 1;
-		aCol = 0;
+		LoadDungeonFromFile("dungeon.txt");
 
 		isChestOpen = false;
 		hasPlayerQuit = false;
 		isAdventureAlive = true;
 
 		lastDirection = string.Empty;
+	}
+
+	private void LoadDungeonFromFile(string fileName)
+	{
+		string[] lines = File.ReadAllLines(fileName);
+
+		int rows = 0;
+		int cols = 0;
+
+		int currentRow = -1;
+		int currentCol = -1;
+
+	for(int i = 0; i < lines.Length; i++)
+		{
+			string line = lines[i].Trim();
+
+			if(line == "" || line.StartsWith("#"))
+			{
+				continue;
+			}
+
+			if(line.StartsWith("ROWS="))
+			{
+				rows = int.Parse(line.Substring("ROWS=".Length));
+			}
+			else if(line.StartsWith("COLS="))
+			{
+				cols = int.Parse(line.Substring("COLS=".Length));
+
+				dungeon = new Room[rows, cols];
+
+				for(int r = 0; r < rows; r++)
+				{
+					for(int c = 0; c < cols; c++)
+					{
+						dungeon[r, c] = new Room();
+					}
+				}
+			}
+			else if(line.StartsWith("EXIT="))
+			{
+				int[] coordinates = ParseCoordinates(line.Substring("EXIT=".Length));
+				exitRow = coordinates[0];
+				exitCol = coordinates[1];
+			}
+			else if(line.StartsWith("ADVENTURER="))
+			{
+				int[] coordinates = ParseCoordinates(line.Substring("ADVENTURER=".Length));
+				aRow = coordinates[0];
+				aCol = coordinates[1];
+			}
+			else if(line.StartsWith("LAMP="))
+			{
+				int[] coordinates = ParseCoordinates(line.Substring("LAMP=".Length));
+				lampRow = coordinates[0];
+				lampCol = coordinates[1];
+				dungeon[lampRow, lampCol].SetLamp(true);
+			}
+			else if(line.StartsWith("KEY="))
+			{
+				int[] coordinates = ParseCoordinates(line.Substring("KEY=".Length));
+				keyRow = coordinates[0];
+				keyCol = coordinates[1];
+				dungeon[keyRow, keyCol].SetKey(true);
+			}
+			else if(line.StartsWith("CHEST="))
+			{
+				int[] coordinates = ParseCoordinates(line.Substring("CHEST=".Length));
+				chestRow = coordinates[0];
+				chestCol = coordinates[1];
+				dungeon[chestRow, chestCol].SetChest(true);
+			}
+			else if(line.StartsWith("GRUE="))
+			{
+				int[] coordinates = ParseCoordinates(line.Substring("GRUE=".Length));
+				grueRow = coordinates[0];
+				grueCol = coordinates[1];
+			}
+			else if(line.StartsWith("ROOM "))
+			{
+				string coordinateText = line.Substring("ROOM ".Length);
+				int[] coordinates = ParseCoordinates(coordinateText);
+
+				currentRow = coordinates[0];
+				currentCol = coordinates[1];
+			}
+			else if(line.StartsWith("LIT="))
+			{
+				bool value = bool.Parse(line.Substring("LIT=".Length));
+				dungeon[currentRow, currentCol].SetLit(value);
+			}
+			else if(line.StartsWith("DESC="))
+			{
+				string value = line.Substring("DESC=".Length);
+				dungeon[currentRow, currentCol].SetDescription(value);
+			}
+			else if(line.StartsWith("N="))
+			{
+				bool value = bool.Parse(line.Substring("N=".Length));
+				dungeon[currentRow, currentCol].SetNorth(value);
+			}
+			else if(line.StartsWith("S="))
+			{
+				bool value = bool.Parse(line.Substring("S=".Length));
+				dungeon[currentRow, currentCol].SetSouth(value);
+			}
+			else if(line.StartsWith("E="))
+			{
+				bool value = bool.Parse(line.Substring("E=".Length));
+				dungeon[currentRow, currentCol].SetEast(value);
+			}
+			else if(line.StartsWith("W="))
+			{
+				bool value = bool.Parse(line.Substring("W=".Length));
+				dungeon[currentRow, currentCol].SetWest(value);
+			}
+		}
+	}
+
+	private int[] ParseCoordinates(string text)
+	{
+		string[] parts = text.Split(',');
+
+		int row = int.Parse(parts[0]);
+		int col = int.Parse(parts[1]);
+
+		return new int[] { row, col };
 	}
 
 	private void ShowGameStartScreen()

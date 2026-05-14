@@ -5,7 +5,7 @@ EXIT=7,7
 ADVENTURER=0,0
 LAMP=0,1
 KEY=4,4
-CHEST=7,7
+CHEST=7,4
 GRUE=6,3
 
 ROOM 0,0
@@ -490,7 +490,7 @@ W=true
 
 ROOM 7,4
 LIT=false
-DESC=Stone Chest Path
+DESC=Treasure Chest Room
 N=true
 S=false
 E=true

@@ -316,12 +316,18 @@ public class AdventureGame
 
 	private void UpdateGameState()
 	{
-
+		if(isChestOpen && aRow == exitRow && aCol == exitCol)
+		{
+			Console.WriteLine("You found the dungeon exit after getting the treasure!");
+			Console.WriteLine("You escaped the dungeon!");
+		}
 	}
 
 	private bool IsGameOver()
 	{
-		return isChestOpen || hasPlayerQuit || !isAdventureAlive;
+		bool isAtExit = aRow == exitRow && aCol == exitCol;
+
+		return hasPlayerQuit || !isAdventureAlive || (isChestOpen && isAtExit);
 	}
 
 	private void ShowGameOverScreen()
@@ -413,11 +419,12 @@ public class AdventureGame
 	{
 		if(r.HasChest())
 		{
-			if(adventurer.HasKey())
-			{
-				Console.WriteLine("You got the treasure!");
-				isChestOpen = true;
-			}
+		if(adventurer.HasKey())
+		{
+			Console.WriteLine("You opened the chest and got the treasure!");
+			Console.WriteLine("Now find your way to the dungeon exit!");
+			isChestOpen = true;
+		}
 			else
 			{
 				Console.WriteLine("You do not have the key!");

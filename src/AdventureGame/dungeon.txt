@@ -1,40 +1,520 @@
-ROWS=2
-COLS=2
+ROWS=8
+COLS=8
 
-EXIT=0,1
-ADVENTURER=1,0
-LAMP=0,0
-KEY=0,0
-CHEST=1,0
-GRUE=1,1
+EXIT=7,7
+ADVENTURER=0,0
+LAMP=0,1
+KEY=4,4
+CHEST=7,7
+GRUE=6,3
 
 ROOM 0,0
 LIT=true
-DESC=Room 1
+DESC=Entrance Room
 N=false
 S=true
 E=true
 W=false
 
 ROOM 0,1
+LIT=true
+DESC=Lamp Room
+N=false
+S=true
+E=true
+W=true
+
+ROOM 0,2
 LIT=false
-DESC=Room 2
+DESC=Dark Hallway
+N=false
+S=true
+E=true
+W=true
+
+ROOM 0,3
+LIT=false
+DESC=Old Stone Room
+N=false
+S=true
+E=true
+W=true
+
+ROOM 0,4
+LIT=false
+DESC=Broken Library
+N=false
+S=true
+E=true
+W=true
+
+ROOM 0,5
+LIT=false
+DESC=Dusty Corner
+N=false
+S=true
+E=true
+W=true
+
+ROOM 0,6
+LIT=true
+DESC=Small Torch Room
+N=false
+S=true
+E=true
+W=true
+
+ROOM 0,7
+LIT=false
+DESC=North East Room
 N=false
 S=true
 E=false
 W=true
 
 ROOM 1,0
-LIT=true
-DESC=Room 3
+LIT=false
+DESC=Cold Room
 N=true
-S=false
+S=true
 E=true
 W=false
 
 ROOM 1,1
 LIT=false
-DESC=Room 4
+DESC=Narrow Passage
+N=true
+S=true
+E=true
+W=true
+
+ROOM 1,2
+LIT=true
+DESC=Blue Fire Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 1,3
+LIT=false
+DESC=Spider Hall
+N=true
+S=true
+E=true
+W=true
+
+ROOM 1,4
+LIT=false
+DESC=Quiet Chamber
+N=true
+S=true
+E=true
+W=true
+
+ROOM 1,5
+LIT=false
+DESC=Cracked Floor Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 1,6
+LIT=false
+DESC=Hidden Path
+N=true
+S=true
+E=true
+W=true
+
+ROOM 1,7
+LIT=false
+DESC=Right Side Hall
+N=true
+S=true
+E=false
+W=true
+
+ROOM 2,0
+LIT=false
+DESC=Wet Cave Room
+N=true
+S=true
+E=true
+W=false
+
+ROOM 2,1
+LIT=false
+DESC=Echo Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 2,2
+LIT=false
+DESC=Dark Square Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 2,3
+LIT=true
+DESC=Lantern Wall Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 2,4
+LIT=false
+DESC=Old Armor Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 2,5
+LIT=false
+DESC=Dusty Hall
+N=true
+S=true
+E=true
+W=true
+
+ROOM 2,6
+LIT=false
+DESC=Broken Door Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 2,7
+LIT=false
+DESC=East Wall Room
+N=true
+S=true
+E=false
+W=true
+
+ROOM 3,0
+LIT=true
+DESC=Safe Rest Room
+N=true
+S=true
+E=true
+W=false
+
+ROOM 3,1
+LIT=false
+DESC=Stone Bridge Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 3,2
+LIT=false
+DESC=Empty Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 3,3
+LIT=false
+DESC=Center Hall
+N=true
+S=true
+E=true
+W=true
+
+ROOM 3,4
+LIT=false
+DESC=Rusty Gate Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 3,5
+LIT=true
+DESC=Torch Corner
+N=true
+S=true
+E=true
+W=true
+
+ROOM 3,6
+LIT=false
+DESC=Old Tunnel
+N=true
+S=true
+E=true
+W=true
+
+ROOM 3,7
+LIT=false
+DESC=East Tunnel
+N=true
+S=true
+E=false
+W=true
+
+ROOM 4,0
+LIT=false
+DESC=Lower West Room
+N=true
+S=true
+E=true
+W=false
+
+ROOM 4,1
+LIT=false
+DESC=Rocky Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 4,2
+LIT=false
+DESC=Dark Storage Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 4,3
+LIT=false
+DESC=Key Hallway
+N=true
+S=true
+E=true
+W=true
+
+ROOM 4,4
+LIT=true
+DESC=Key Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 4,5
+LIT=false
+DESC=Quiet Stone Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 4,6
+LIT=false
+DESC=Hidden Dust Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 4,7
+LIT=false
+DESC=Right Lower Room
+N=true
+S=true
+E=false
+W=true
+
+ROOM 5,0
+LIT=false
+DESC=Deep Cave Entrance
+N=true
+S=true
+E=true
+W=false
+
+ROOM 5,1
+LIT=true
+DESC=Glowing Moss Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 5,2
+LIT=false
+DESC=Long Hallway
+N=true
+S=true
+E=true
+W=true
+
+ROOM 5,3
+LIT=false
+DESC=Warning Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 5,4
+LIT=false
+DESC=Treasure Path
+N=true
+S=true
+E=true
+W=true
+
+ROOM 5,5
+LIT=false
+DESC=Dark Turn
+N=true
+S=true
+E=true
+W=true
+
+ROOM 5,6
+LIT=false
+DESC=Small Cave Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 5,7
+LIT=true
+DESC=Bright Side Room
+N=true
+S=true
+E=false
+W=true
+
+ROOM 6,0
+LIT=false
+DESC=Lower Cave
+N=true
+S=true
+E=true
+W=false
+
+ROOM 6,1
+LIT=false
+DESC=Silent Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 6,2
+LIT=false
+DESC=Dark Tunnel
+N=true
+S=true
+E=true
+W=true
+
+ROOM 6,3
+LIT=false
+DESC=Grue Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 6,4
+LIT=false
+DESC=Old Treasure Hall
+N=true
+S=true
+E=true
+W=true
+
+ROOM 6,5
+LIT=true
+DESC=Final Torch Room
+N=true
+S=true
+E=true
+W=true
+
+ROOM 6,6
+LIT=false
+DESC=Final Passage
+N=true
+S=true
+E=true
+W=true
+
+ROOM 6,7
+LIT=false
+DESC=Exit Path
+N=true
+S=true
+E=false
+W=true
+
+ROOM 7,0
+LIT=false
+DESC=South West Room
+N=true
+S=false
+E=true
+W=false
+
+ROOM 7,1
+LIT=false
+DESC=Bottom Hall
+N=true
+S=false
+E=true
+W=true
+
+ROOM 7,2
+LIT=true
+DESC=Last Safe Room
+N=true
+S=false
+E=true
+W=true
+
+ROOM 7,3
+LIT=false
+DESC=Dark Final Hall
+N=true
+S=false
+E=true
+W=true
+
+ROOM 7,4
+LIT=false
+DESC=Stone Chest Path
+N=true
+S=false
+E=true
+W=true
+
+ROOM 7,5
+LIT=false
+DESC=Treasure Hallway
+N=true
+S=false
+E=true
+W=true
+
+ROOM 7,6
+LIT=false
+DESC=Final Door Room
+N=true
+S=false
+E=true
+W=true
+
+ROOM 7,7
+LIT=true
+DESC=Exit and Treasure Room
 N=true
 S=false
 E=false

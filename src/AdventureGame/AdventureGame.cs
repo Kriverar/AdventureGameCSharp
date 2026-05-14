@@ -316,11 +316,50 @@ public class AdventureGame
 
 	private void UpdateGameState()
 	{
+		if(!isAdventureAlive || hasPlayerQuit)
+		{
+			return;
+		}
+
 		if(isChestOpen && aRow == exitRow && aCol == exitCol)
 		{
 			Console.WriteLine("You found the dungeon exit after getting the treasure!");
 			Console.WriteLine("You escaped the dungeon!");
+			return;
 		}
+
+		if(isChestOpen)
+		{
+			MoveGrueTowardAdventurer();
+
+			if(aRow == grueRow && aCol == grueCol)
+			{
+				Console.WriteLine("The Grue caught you after you opened the treasure chest!");
+				isAdventureAlive = false;
+			}
+		}
+	}
+
+	private void MoveGrueTowardAdventurer()
+	{
+		if(grueRow < aRow)
+		{
+			grueRow++;
+		}
+		else if(grueRow > aRow)
+		{
+			grueRow--;
+		}
+		else if(grueCol < aCol)
+		{
+			grueCol++;
+		}
+		else if(grueCol > aCol)
+		{
+			grueCol--;
+		}
+
+		Console.WriteLine("You hear the Grue getting closer...");
 	}
 
 	private bool IsGameOver()
